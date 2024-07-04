@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload PROF</title>
+  <link rel="stylesheet" href="/public/upload_cours/img/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+<div class="svg-container">
+  <a href="/public/accueil/accueil.html" class="back-button">
+    <img src="/public/css/imgfiles/retour.png" alt="Bouton de retour">
+  </a>
+</div>
+<div class="container">
+  <img src="/public/upload_cours/img/OPLOGO.png" alt="Logo du site" class="logo">
+  
+  <ul class="nav nav-tabs" id="uploadTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="document-tab" data-toggle="tab" href="#document" role="tab" aria-controls="document" aria-selected="true">Upload Document</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="false">Upload Vidéo</a>
+    </li>
+  </ul>
+  
+  <div class="tab-content" id="uploadTabsContent">
+    <div class="tab-pane fade show active form-container" id="document" role="tabpanel" aria-labelledby="document-tab">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="title">Titre du cours :</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="description">Description du cours :</label><br>
+        <input type="text" id="description" name="description" required><br>
+        <label for="category">Catégorie :</label><br>
+        <select name="category" id="category" required>
+          <option value="">Sélectionnez une catégorie</option>
+          <option value="leçon">Leçon</option>
+          <option value="conjugaison">Conjugaison</option>
+          <option value="grammaire">Grammaire</option>
+          <option value="vidéo appli">Vidéo Appli</option>
+        </select><br>
+        <label for="level">Niveau :</label><br>
+        <select name="level" id="level" required>
+          <option value="">Sélectionnez un niveau</option>
+          <option value="1">Débutant 1</option>
+          <option value="2">Intermédiaire 2</option>
+          <option value="3">Confirmé 3</option>
+          <option value="4">oui baguette 4</option>
+        </select><br>
+        <label for="teacher_id">ID du Professeur :</label><br>
+        <input type="text" id="teacher_id" name="teacher_id" required><br>
+        <label for="file">Fichier du cours :</label><br>
+        <input type="file" id="file" name="file" accept=".pdf" required><br>
+        <input type="submit" value="Upload">
+        <a href="/liste_cours">Voir la liste des cours</a>
+      </form>
+    </div>
+    
+    <div class="tab-pane fade form-container" id="video" role="tabpanel" aria-labelledby="video-tab">
+      <form id="uploadVideoForm" action="/upload_video" method="post" enctype="multipart/form-data">
+        <label for="videoTitle">Titre de la vidéo :</label><br>
+        <input type="text" id="videoTitle" name="title" required><br>
+        <label for="videoDescription">Description de la vidéo :</label><br>
+        <input type="text" id="videoDescription" name="description" required><br>
+        <label for="videoFile">Fichier vidéo :</label><br>
+        <input type="file" id="videoFile" name="video" accept="video/*" required><br>
+        <input type="submit" value="Upload Vidéo">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="drops">
+  <div class="drop drop-1"></div>
+  <div class="drop drop-2"></div>
+  <div class="drop drop-3"></div>
+  <div class="drop drop-4"></div>
+  <div class="drop drop-5"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

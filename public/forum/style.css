@@ -1,0 +1,49 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2a255d;
+    margin: 0;
+    padding: 0;
+}
+.comment-section {
+    width: 80%;
+    margin: auto;
+}
+
+#comments {
+    margin-bottom: 20px;
+}
+
+#username-input, #comment-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment {
+    background-color: #f9f5f596;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.comment .username {
+    font-weight: bold;
+}
+
+.topic {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment {
+    background-color: #f9f9f9;
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

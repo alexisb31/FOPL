@@ -1,0 +1,10 @@
+<h1>Commentaires</h1>
+<% comment.forEach(comment => { %>
+  <p><%= comment.text %> (par <%= comment.user.username %>)</p>
+<% }); %>
+
+<h2>Ajouter un commentaire</h2>
+<form action="/comment" method="post">
+  <textarea name="text"></textarea>
+  <button type="submit">Poster</button>
+</form>

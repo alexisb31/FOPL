@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="css/img/style.css">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
+<div class="container">
+  <img src="css/img/OPLOGO.png" alt="Logo du site" class="logo">
+  <form action="/inscription" method="POST" class="needs-validation" novalidate>
+    <p>Bienvenue</p>
+    <div>
+      <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required>
+    </div>
+    <select name="role" id="role" required>
+      <option value="">rôle</option>
+      <option value="student">Étudiant</option>
+      <option value="teacher">Professeur</option>
+    </select>
+    <div>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+    </div>
+    <div>
+      <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+    </div>
+    <div>
+      <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmez le mot de passe" required>
+    </div>
+    <div>
+    </div>
+    <div>
+      <input type="submit" value="S'inscrire">
+    </div>
+  </form>
+  <div class="drops">
+    <div class="drop drop-1"></div>
+    <div class="drop drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop drop-4"></div>
+    <div class="drop drop-5"></div>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

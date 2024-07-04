@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>LES COURS 🚀</title>
+  <link rel="stylesheet" href="/public/css/imgfiles/style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <a href="/public/accueil/accueil.html" class="back-button">
+    <img src="/public/css/imgfiles/retour.png" alt="Bouton de retour">
+  </a>
+  <a href="/files" class="refresh-icon">
+    <img src="/public/css/imgfiles/refresh-svgrepo-com.svg" alt="Refresh Icon">
+  </a>
+  <form id="searchForm" class="form" action="/search" method="POST">
+    <label for="category">Catégorie 🚀:</label>
+    <select id="category" name="category">
+      <option value="leçon">Leçon</option>
+      <option value="conjugaison">Conjugaison</option>
+      <option value="grammaire">Grammaire</option>
+      <option value="vidéo appli">Vidéo Appli</option>
+    </select>
+  
+    <label for="level">Niveau 🗿 :</label>
+    <select id="level" name="level">
+      <option value="1">Débutant 1</option>
+      <option value="2">Intermédiaire 2</option>
+      <option value="3">Confirmé 3</option>
+      <option value="4">oui baguette 4</option>
+    </select>
+  
+    <button type="submit">Rechercher</button>
+  </form>
+  
+  <div class="container mt-5" id="courseContainer">
+    <% courses.forEach(course => { %>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= course.title %></h5>
+          <p class="card-text"><%= course.description %></p>
+          <a href="<%= course.file_path %>" class="btn btn-primary">Télécharger le cours</a>
+          <p class="mt-2"><small class="text-muted">Créé le: <%= new Date(course.created_at).toLocaleDateString() %></small></p>
+          <p class="mt-2"><small class="text-muted">Mis à jour le: <%= new Date(course.updated_at).toLocaleDateString() %></small></p>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+  <script src="https://unpkg.com/i18next@19.9.2/dist/umd/i18next.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#searchForm').on('submit', function(event) {
+        event.preventDefault();
+
+        $.ajax({
+          url: '/search',
+          method: 'POST',
+          data: $(this).serialize(),
+          success: function(response) {
+            let courseContainer = $('#courseContainer');
+            courseContainer.empty(); // Clear current courses
+            response.forEach(course => {
+              courseContainer.append(`
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title">${course.title}</h5>
+                    <p class="card-text">${course.description}</p>
+                    <a href="${course.file_path}" class="btn btn-primary">Télécharger le cours</a>
+                    <p class="mt-2"><small class="text-muted">Professeur ID: ${course.teacher_id}</small></p>
+                    <p class="mt-2"><small class="text-muted">Créé le: ${new Date(course.created_at).toLocaleDateString()}</small></p>
+                    <p class="mt-2"><small class="text-muted">Mis à jour le: ${new Date(course.updated_at).toLocaleDateString()}</small></p>
+                  </div>
+                </div>
+              `);
+            });
+          },
+          error: function() {
+            alert('Erreur lors de la recherche des cours');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

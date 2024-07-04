@@ -1,0 +1,195 @@
+body {
+  background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926');
+    font-family: "Montserrat", sans-serif;
+  }
+  .container {
+    margin-top: 30em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 60%;
+    left: 50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+@media (max-width: 600px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+form {
+  background: rgba(241, 237, 237, 0.3);
+  padding: 2em; 
+  height: auto; 
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+tab-pane fade form-container {
+  background: rgba(241, 237, 237, 0.3);
+  padding: 2em; 
+  height: auto; 
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: fixed;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+form label {
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1.2rem; 
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 100%;
+  text-align: left; 
+  padding-left: 10%; 
+  box-sizing: border-box;
+  animation: alternate;
+}
+
+form input, form textarea, form select {
+  background: rgba(255, 255, 255, 0.1);
+  width: 80%; 
+  max-width: 500px; 
+  padding: 1em;
+  margin-bottom: 1em;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px; 
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: #928c8c;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; 
+}
+
+
+form input:hover, form textarea:hover, form select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+form input:focus, form textarea:focus, form select:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+form button:hover {
+  background-color: #7c8894 !important; 
+}
+
+form button:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+  
+  border-radius: 10%;
+  max-width: 100px; 
+  position :absolute;
+  align-self: center;
+  top: -140px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px; 
+  height: auto;
+}
+  .drop-1 {
+    height: 80px;
+    width: 80px;
+    top: -20px;
+    left: -40px;
+    z-index: -1;
+  }
+  .drop-2 {
+    height: 80px;
+    width: 80px;
+    bottom: -30px;
+    right: -10px;
+  }
+  .drop-3 {
+    height: 100px;
+    width: 100px;
+    bottom: 120px;
+    right: -50px;
+    z-index: -1;
+  }
+  .drop-4 {
+    height: 120px;
+    width: 120px;
+    top: -60px;
+    right: -60px;
+  }
+  .drop-5 {
+    height: 60px;
+    width: 60px;
+    bottom: 170px;
+    left: 90px;
+    z-index: -1;
+  }
+  a,
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
+  
+  .svg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px; 
+    height: 50px; 
+    color: #fff;
+  }
+  
+  .svg-container svg {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+  }
+
+  .nav-tabs .nav-link.active {
+    border: none !important;
+    border-bottom: 3px solid #77ace5 !important;
+    margin-top: 2; 
+    background-color: #b0c7de !important;
+    color: rgb(50, 52, 54)!important;
+}
+.form-container {
+    margin-top: 40px;
+}
