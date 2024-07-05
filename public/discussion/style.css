@@ -1,35 +1,61 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926');
+    background: -webkit-linear-gradient(-45deg, #3764ce 0%, #dfedf6 62%, #c53737 100%);
     color: #333;
     margin: 0;
     padding: 0;
 }
 
+
+
 .container {
-    background: #fff;
-    border-radius: 15px;
+    border-radius: 20px;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #94b2eeb4;
+    box-shadow: 0 0 10px rgba(253, 251, 251, 0.79);
+}
+
+.back-button img {
+    width: 30px;
+    height: auto;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .logo {
-    max-width: 100px;
+    width: 100px;
     height: auto;
     margin-bottom: 20px;
+    border-radius: 20px;
 }
 
 .page-title {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .discussion-section {
-    padding: 20px;
-    background: #e9ecef;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.discussion-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #cedef0;
 }
 
 .comments {
@@ -37,18 +63,72 @@ body {
 }
 
 .comment {
-    padding: 10px;
-    margin-bottom: 10px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.comment .username {
+.username {
     font-weight: bold;
+    color: #b30000a3;
 }
 
-.comment .timestamp {
-    font-size: 0.8em;
-    color: #999;
+.timestamp {
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.super-button {
+    background: -webkit-linear-gradient(45deg, #ce3737, #1C6EA4);
+    background: -moz-linear-gradient(45deg, #ce3737, #1C6EA4);
+    background: linear-gradient(45deg, #ce3737, #1C6EA4);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.super-button:hover {
+    background: -webkit-linear-gradient(45deg, #1C6EA4, #f3f7f4);
+    background: -moz-linear-gradient(45deg, #1C6EA4, #ce3737);
+    background: linear-gradient(45deg, #1C6EA4, #edeeed);
+    transform: translateY(-3px);
+}
+
+.super-button:active {
+    transform: translateY(1px);
 }

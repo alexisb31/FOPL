@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926');
+    background: -webkit-linear-gradient(-45deg, #3764ce 0%, #dfedf6 62%, #c53737 100%);
     background-size: cover;
     background-attachment: fixed;
     color: #333;
@@ -9,10 +9,12 @@ body {
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
+    border-radius: 20px;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #6194fab4;
+    box-shadow: 0 0 10px rgba(253, 251, 251, 0.79);
 }
 
 .back-link {
@@ -37,14 +39,12 @@ body {
 }
 
 .page-title {
-    font-size: 2.5em;
-    color: #333;
-    background-color: #fff;
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 2px solid #333;
-    margin-bottom: 20px;
+  
+        background: linear-gradient(to right, #f71519, #4129fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    
 }
 
 .video-card {
@@ -59,8 +59,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px; 
-    height: 50px; 
+    width: 20px; 
+    height: 30px; 
     color: #fff;
   }
   
@@ -68,6 +68,19 @@ body {
     width: 100%;
     height: 100%;
     color: #fff;
+  }
+
+
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: auto;
+  }
+  
+  .back-button img {
+      width: 30px;
+      height: auto;
   }
 
 .video-card:hover {
@@ -81,7 +94,7 @@ body {
 
 .card-title {
     font-size: 1.5em;
-    color: #007bff;
+    color: #62a5ed;
 }
 
 .card-text {

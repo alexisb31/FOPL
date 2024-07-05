@@ -5,94 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sa discute 📢</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/display/styles.css">
+    <link rel="stylesheet" href="/public/discussion/style.css">
 </head>
 <body>
     <a href="/public/accueil/accueil.html" class="back-button">
         <img src="/public/css/imgfiles/retour.png" alt="Bouton de retour">
-      </a>
+    </a>
     <div class="container my-4">
         <div class="row mb-4">
             <div class="col-12 text-center">
                 <img src="../display/images/OPLOGO.png" alt="Logo" class="logo">
-                <h1 class="page-title">Discussion Page</h1>
+                <h1 class="page-title">sa discute 📢</h1>
             </div>
         </div>
-        <ul class="nav nav-tabs" id="discussionTabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="courses-tab" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="true">Courses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="videos-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos" aria-selected="false">Videos</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="discussionTabsContent">
-            <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
-                <div class="discussion-section">
-                    <h2>Courses Discussion</h2>
-                    <div id="courseComments" class="comments">
-                        <!-- Comments will be loaded here -->
-                    </div>
-                    <form id="courseCommentForm">
-                        <div class="form-group">
-                            <label for="courseComment">Your Comment</label>
-                            <textarea class="form-control" id="courseComment" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+        <div class="discussion-section">
+            
+            <div id="allComments" class="comments">
+         
             </div>
-            <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">
-                <div class="discussion-section">
-                    <h2>Videos Discussion</h2>
-                    <div id="videoComments" class="comments">
-                        <!-- Comments will be loaded here -->
-                    </div>
-                    <form id="videoCommentForm">
-                        <div class="form-group">
-                            <label for="videoComment">Your Comment</label>
-                            <textarea class="form-control" id="videoComment" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+            <form id="commentForm">
+                <div class="form-group">
+                    <label for="comment">poste ton Commentaire !</label>
+                    <textarea class="form-control" id="comment" rows="3" required></textarea>
                 </div>
-            </div>
+                <button class="super-button" type="submit">Cliquez-moi</button>
+
+            </form>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>$(document).ready(function() {
-        function loadComments(section) {
-           
-            const commentsContainer = $('#' + section + 'Comments');
-            commentsContainer.empty();
-            comments.forEach(comment => {
-                commentsContainer.append(`
-                    <div class="comment">
-                        <div class="username">${comment.username}</div>
-                        <div class="timestamp">${comment.timestamp}</div>
-                        <div class="content">${comment.content}</div>
-                    </div>
-                `);
+    <script>
+    $(document).ready(function() {
+        function loadComments() {
+            $.get('/comments', function(comments) {
+                const commentsContainer = $('#allComments');
+                commentsContainer.empty();
+                comments.forEach(comment => {
+                    commentsContainer.append(`
+                        <div class="comment">
+                            <div class="username">${comment.author}</div>
+                            <div class="timestamp">${new Date(comment.created_at).toLocaleString()}</div>
+                            <div class="content">${comment.comment}</div>
+                        </div>
+                    `);
+                });
             });
         }
-        function handleCommentFormSubmit(section) {
-            $('#' + section + 'CommentForm').submit(function(event) {
-                event.preventDefault();
-                const commentText = $('#' + section + 'Comment').val();
-                
-                console.log(`Comment submitted to ${section}: ${commentText}`);
-                $('#' + section + 'Comment').val('');
-                loadComments(section); 
+
+        $('#commentForm').submit(function(event) {
+            event.preventDefault();
+            const commentText = $('#comment').val();
+            const author = 'Anonymous'; // You can change this to get the actual username
+
+            $.post('/comments', { video_id: 0, author, comment: commentText }, function() {
+                $('#comment').val('');
+                loadComments();
             });
-        }
-    
-        loadComments('course');
-        loadComments('video');
-        handleCommentFormSubmit('course');
-        handleCommentFormSubmit('video');
+        });
+
+        loadComments();
     });
     </script>
 </body>
