@@ -31,9 +31,13 @@
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
          <a href="/liste_cours" data-i18n="your-documents">Les cours !</a>
          <a href="#we_Do" data-i18n="our-actions">nos actions </a>
-         <a href="/upload_cours/upload_cours.html" data-i18n="upload">upload</a>
+         <% if (user.role !== 'student') { %>
+            <a href="../upload_cours.html" data-i18n="upload">upload</a>
+          <% } %>
+        
          <a href="/videos" data-i18n="video-area">Espace Video</a> 
-         <a href="/discussion">Espace commentaire</a>
+         <a href="/discussion"data-i18n="comment-area">Espace commentaire</a>
+         <a href="/public/login.html">Déconnexion</a>
       </div>
       <header>
          <div class="header">
@@ -193,6 +197,7 @@
         resources: {
           en: {
             translation: {
+          "comment-area": "comment-area",
           "video-area": "video-area",     
           "close": "Close",
           "your-documents": "Your Documents",
@@ -216,6 +221,7 @@
           },
           fr: {
             translation: {
+               "comment-area": "espace commentaire",
                "video-area": "espace video", 
                "close": "Fermer",
                "your-documents": "Vos documents",
@@ -239,6 +245,7 @@
           },
           es: {
             translation: {
+               "comment-area": "área de comentarios",
                "video-area": "Área de vídeo", 
                "close": "Cerrar",
                "your-documents": "Tus documentos",
@@ -262,6 +269,7 @@
           },
           de: {
             translation: {
+               "comment-area": "Kommentarbereich",
                "video-area": "video-Bereich",
                "close": "Schließen",
                "your-documents": "Ihre Dokumente",

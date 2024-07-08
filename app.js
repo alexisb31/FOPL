@@ -26,7 +26,6 @@ app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 
 
 
-// Configuration de i18next pour l'internationalisation
 i18next.use(FsBackend).init({
     lng: 'en',
     fallbackLng: 'en',
@@ -36,7 +35,7 @@ i18next.use(FsBackend).init({
     },
 });
 
-// Création de la connexion à la base de données
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -48,7 +47,6 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
 
-// Inscription des utilisateurs
 app.post('/inscription', async (req, res) => {
     const { email, username, password, confirmPassword, role } = req.body;
   
@@ -72,8 +70,9 @@ app.post('/inscription', async (req, res) => {
     });
 });
 
-// Route vers la page d'accueil
+
+
+
 app.get('/confirmation', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'confirmation.html'));
 });
-

@@ -62,10 +62,12 @@ router.post('/login', (req, res) => {
   });
 });
 
+
+
 /// vers la page d'accueil
 router.get('/accueil', (req, res) => {
   if(req.session.user) {
-    res.sendFile(path.join(__dirname, '../ProjetAnnuel/public/accueil/accueil.html'));
+    res.render('accueil/accueil', { user: req.session.user });C
   } else {
     res.redirect('/login.html'); 
   }

@@ -13,7 +13,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #6194fab4;
+    background-color: #dee6f7b4;
     box-shadow: 0 0 10px rgba(253, 251, 251, 0.79);
 }
 
@@ -40,7 +40,7 @@ body {
 
 .page-title {
   
-        background: linear-gradient(to right, #f71519, #4129fc);
+        background: linear-gradient(to right, #f70509, #2004f4);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;

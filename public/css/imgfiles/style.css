@@ -306,3 +306,63 @@ h2 {
   width: 30px;
   height: auto;
 }
+
+
+.btn-logout {
+  background: -webkit-linear-gradient(45deg, #f44336, #e57373);
+  background: -moz-linear-gradient(45deg, #f44336, #e57373);
+  background: linear-gradient(45deg, #f44336, #e57373);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin: 10px;
+  display: inline-block;
+}
+
+.btn-logout:hover {
+  background: -webkit-linear-gradient(45deg, #e57373, #f44336);
+  background: -moz-linear-gradient(45deg, #e57373, #f44336);
+  background: linear-gradient(45deg, #e57373, #f44336);
+  transform: translateY(-3px);
+}
+
+.btn-logout:active {
+  transform: translateY(1px);
+}
+
+/* Styles pour le bouton d'upload */
+.btn-upload {
+  background: -webkit-linear-gradient(45deg, #ce3737, #1C6EA4);
+  background: -moz-linear-gradient(45deg, #ce3737, #1C6EA4);
+  background: linear-gradient(45deg, #ce3737, #1C6EA4);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin: 10px;
+  display: inline-block;
+}
+
+.btn-upload:hover {
+  background: -webkit-linear-gradient(45deg, #1C6EA4, #f3f7f4);
+  background: -moz-linear-gradient(45deg, #1C6EA4, #ce3737);
+  background: linear-gradient(45deg, #1C6EA4, #edeeed);
+  transform: translateY(-3px);
+}
+
+.btn-upload:active {
+  transform: translateY(1px);
+}

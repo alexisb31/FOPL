@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const mysql = require('mysql');
 const multer = require('multer');
 const router = express.Router();
@@ -38,13 +39,6 @@ function queryPromise(query, params = []) {
   });
 }
 
-
-app.get('/page_affichage_cours', (req, res) => {
-  const userRole = req.user.role;
-  res.render('page_affichage_cours', { role: userRole });
-});
-
-
 router.post('/upload', upload.single('file'), (req, res) => {
   const { title, description, category, level } = req.body;
   const file_path = req.file.path;
@@ -59,7 +53,6 @@ router.post('/upload', upload.single('file'), (req, res) => {
     res.json({ success: true, message: 'Cours uploadé avec succès' });
   });
 });
-
 
 router.post('/upload_video', upload.single('video'), (req, res) => {
   const { title, description } = req.body;
@@ -98,13 +91,9 @@ router.get('/videos', (req, res) => {
   });
 });
 
-
-
 router.get('/discussion', (req, res) => {
   res.render('discussion');
 });
-
-
 
 router.post('/search', (req, res) => {
   let { category, level } = req.body;
@@ -131,9 +120,9 @@ router.post('/search', (req, res) => {
 
 
 router.post('/comments', (req, res) => {
-  const { video_id, author, comment } = req.body;
+  const { author, comment } = req.body;
 
-  const query = 'INSERT INTO comments (video_id, author, comment, created_at) VALUES (?, ?, ?, NOW())';
+  const query = 'INSERT INTO comments (author, comment, created_at) VALUES (?, ?, ?, NOW())';
   db.query(query, [video_id, author, comment], (err, result) => {
     if (err) {
       console.error('Erreur lors de l\'insertion du commentaire : ', err);
@@ -153,5 +142,14 @@ router.get('/comments', (req, res) => {
     res.status(500).send('Erreur du serveur');
   });
 });
+
+router.get('/upload_cours', (req, res) => {
+
+  const userRole = req.user.role;
+  res.render('/upload_cours', { role: userRole });
+});
+
+
+
 
 module.exports = router;
