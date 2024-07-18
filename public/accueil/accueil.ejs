@@ -21,24 +21,41 @@
    <body>
    
       <div id="mySidepanel" class="sidepanel">
+      
+         <div class="user-info">
+             <div class="user-icon">
+                 <i class="fa fa-user-circle"></i>
+                 <span class="status-indicator"></span>
+             </div>
+             <div class="user-details">
+                 <% if (user) { %>
+                     <p><strong><%= user.username %></strong></p>
+                     <p>Compte créé le : <%= user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A' %></p>
+                     <p>Statut : <%= user.role %></p>
+                 <% } else { %>
+                     <p>Utilisateur non connecté</p>
+                 <% } %>
+             </div>
+         </div>
+         <hr>
          <select id="changeLanguage" LANGUAGE>
-            <option value="fr">Français</option>
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="de">Deutsch</option>
-          </select>
+             <option value="fr">Français</option>
+             <option value="en">English</option>
+             <option value="es">Español</option>
+             <option value="de">Deutsch</option>
+         </select>
          <a href="javascript:void(0)" class="openbtn" onclick="openNav()"></a>
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
          <a href="/liste_cours" data-i18n="your-documents">Les cours !</a>
          <a href="#we_Do" data-i18n="our-actions">nos actions </a>
-         <% if (user.role !== 'student') { %>
-            <a href="../upload_cours.html" data-i18n="upload">upload</a>
-          <% } %>
-        
-         <a href="/videos" data-i18n="video-area">Espace Video</a> 
-         <a href="/discussion"data-i18n="comment-area">Espace commentaire</a>
+         <% if (user && user.role !== 'student') { %>
+             <a href="../upload_cours.html" data-i18n="upload">upload</a>
+         <% } %>
+         <a href="/videos" data-i18n="video-area">Espace Video</a>
+         <a href="/discussion" data-i18n="comment-area">Espace commentaire</a>
          <a href="/public/login.html" data-i18n="Déconnexion">Déconnexion</a>
-      </div>
+     </div>
+       
       <header>
          <div class="header">
             <div class="container-fluid">

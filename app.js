@@ -70,6 +70,19 @@ app.post('/inscription', async (req, res) => {
     });
 });
 
+app.get('/accueil', (req, res) => {
+    
+    const user = {
+        username: "Alexis",
+        created_at: new Date('2024-04-09T15:20:21Z'),
+        role: "teacher"
+    };
+
+    
+    res.render('accueil', { user: user });
+});
+
+
 
 
 

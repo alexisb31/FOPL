@@ -119,11 +119,13 @@ router.post('/upload', upload.single('file'), (req, res) => {
           </div>
       </div>
 
-      <script>
+          <script>
           // Disappear after 3 seconds
-          setTimeout(function() {
-              document.querySelector('.container').style.display = 'none';
-          }, 3000);
+        setTimeout(function() {
+            document.querySelector('.container').style.display = 'none';
+            // Rediriger vers la page d'upload après 3 secondes
+             window.location.href = 'public/upload_cours.html'; 
+        }, 3000);
       </script>
   </body>
   </html>`;
@@ -143,6 +145,7 @@ db.query(query, [title, description, file_path], (err, result) => {
     console.error('Erreur lors de l\'insertion de la vidéo : ', err);
     return res.status(500).send('Erreur lors de l\'enregistrement de la vidéo');
   }
+ 
   
   const successHtml = `
   <!DOCTYPE html>
@@ -215,10 +218,12 @@ db.query(query, [title, description, file_path], (err, result) => {
 
       <script>
           // Disappear after 3 seconds
-          setTimeout(function() {
-              document.querySelector('.container').style.display = 'none';
-          }, 3000);
-      </script>
+        setTimeout(function() {
+            document.querySelector('.container').style.display = 'none';
+            // Rediriger vers la page d'upload après 3 secondes
+             window.location.href = 'public/upload_cours.html'; 
+        }, 3000);
+    </script>
   </body>
   </html>`;
 
@@ -278,34 +283,54 @@ router.post('/search', (req, res) => {
 
 
 router.post('/comments', (req, res) => {
-  const { author, comment } = req.body;
 
-  const query = 'INSERT INTO comments (author, comment, created_at) VALUES (?, ?, ?, NOW())';
-  db.query(query, [video_id, author, comment], (err, result) => {
-    if (err) {
-      console.error('Erreur lors de l\'insertion du commentaire : ', err);
-      return res.status(500).json({ success: false, message: 'Erreur lors de l\'enregistrement du commentaire' });
-    }
-    res.json({ success: true, message: 'Commentaire ajouté avec succès' });
+ const { author, comment } = req.body;
+    
+ const query = 'INSERT INTO comments (author, comment, created_at) VALUES (?, ?, NOW())';
+  
+ db.query(query, [author, comment], (err, result) => {
+  
+  if (err) {
+  
+   console.error('Erreur lors de l\'insertion du commentaire : ', err);
+  
+   return res.status(500).json({ success: false, message: 'Erreur lors de l\'enregistrement du commentaire' });
+  
+   }
+  
+   res.json({ success: true, message: 'Commentaire ajouté avec succès' });
+  
+   });
+  
   });
-});
-
-
-router.get('/comments', (req, res) => {
-  const query = 'SELECT * FROM comments ORDER BY created_at DESC';
-  queryPromise(query).then(comments => {
-    res.json(comments);
-  }).catch(err => {
-    console.error(err);
-    res.status(500).send('Erreur du serveur');
+  
+    
+    
+  
+  router.get('/comments', (req, res) => {
+  
+   const query = 'SELECT * FROM comments ORDER BY created_at DESC';
+  
+   queryPromise(query).then(comments => {
+  
+   res.json(comments);
+  
+   }).catch(err => {
+  
+   console.error(err);
+  
+   res.status(500).send('Erreur du serveur');
+  
   });
-});
+  
+  });
+  
+  router.get('/upload_cours', (req, res) => {
 
-router.get('/upload_cours', (req, res) => {
-
-  const userRole = req.user.role;
-  res.render('/upload_cours', { role: userRole });
-});
+   const userRole = req.user.role;
+   res.render('/upload_cours', { role: userRole });
+  
+  });
 
 
 
