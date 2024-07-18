@@ -50,8 +50,86 @@ router.post('/upload', upload.single('file'), (req, res) => {
       console.error('Erreur lors de l\'insertion du cours : ', err);
       return res.status(500).json({ success: false, message: 'Erreur lors de l\'enregistrement du cours' });
     }
-    res.json({ success: true, message: 'Cours uploadé avec succès' });
-  });
+    const successHtml = `
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Succès de l'upload</title>
+      <style>
+          body {
+              background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926');
+              font-family: "Montserrat", sans-serif;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+          }
+
+          .container {
+              text-align: center;
+              background: rgba(255, 255, 255, 0.8);
+              -webkit-backdrop-filter: blur(10px);
+              backdrop-filter: blur(10px);
+              padding: 20px;
+              border-radius: 10px;
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+          }
+
+          .logo {
+              max-width: 30%;
+              height: auto;
+              margin-bottom: 20px;
+              border-radius: 5px;
+          }
+
+          .message-box h1 {
+              color: #333;
+          }
+
+          .message-box p {
+              color: #555;
+              margin-bottom: 20px;
+          }
+
+          button {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 500;
+              padding: 10px 20px;
+              border: none;
+              background-color: #58a9c0;
+              color: white;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+          }
+
+          button:hover {
+              background-color: #0056b3;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <div class="message-box">
+              <h1>Cours uploadé avec succès</h1>
+              <p>Votre vidéo a été uploadé avec succès.</p>
+          </div>
+      </div>
+
+      <script>
+          // Disappear after 3 seconds
+          setTimeout(function() {
+              document.querySelector('.container').style.display = 'none';
+          }, 3000);
+      </script>
+  </body>
+  </html>`;
+
+  res.send(successHtml);
+});
 });
 
 router.post('/upload_video', upload.single('video'), (req, res) => {
@@ -60,14 +138,94 @@ router.post('/upload_video', upload.single('video'), (req, res) => {
 
 
   const query = 'INSERT INTO videos (title, description, file_path, uploaded_at) VALUES (?, ?, ?, NOW())';
-  db.query(query, [title, description, file_path], (err, result) => {
-    if (err) {
-      console.error('Erreur lors de l\'insertion de la vidéo : ', err);
-      return res.status(500).send('Erreur lors de l\'enregistrement de la vidéo');
-    }
-    res.send('Vidéo uploadée avec succès');
-  });
+db.query(query, [title, description, file_path], (err, result) => {
+  if (err) {
+    console.error('Erreur lors de l\'insertion de la vidéo : ', err);
+    return res.status(500).send('Erreur lors de l\'enregistrement de la vidéo');
+  }
+  
+  const successHtml = `
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Succès de l'upload</title>
+      <style>
+          body {
+              background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926');
+              font-family: "Montserrat", sans-serif;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+          }
+
+          .container {
+              text-align: center;
+              background: rgba(255, 255, 255, 0.8);
+              -webkit-backdrop-filter: blur(10px);
+              backdrop-filter: blur(10px);
+              padding: 20px;
+              border-radius: 10px;
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+          }
+
+          .logo {
+              max-width: 30%;
+              height: auto;
+              margin-bottom: 20px;
+              border-radius: 5px;
+          }
+
+          .message-box h1 {
+              color: #333;
+          }
+
+          .message-box p {
+              color: #555;
+              margin-bottom: 20px;
+          }
+
+          button {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 500;
+              padding: 10px 20px;
+              border: none;
+              background-color: #58a9c0;
+              color: white;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+          }
+
+          button:hover {
+              background-color: #0056b3;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <div class="message-box">
+              <h1>Vidéo uploadée avec succès</h1>
+              <p>Votre vidéo a été uploadée avec succès.</p>
+          </div>
+      </div>
+
+      <script>
+          // Disappear after 3 seconds
+          setTimeout(function() {
+              document.querySelector('.container').style.display = 'none';
+          }, 3000);
+      </script>
+  </body>
+  </html>`;
+
+  res.send(successHtml);
 });
+});
+
 
 
 router.get('/liste_cours', (req, res) => {
