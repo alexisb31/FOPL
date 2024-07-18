@@ -70,6 +70,7 @@ app.post('/inscription', async (req, res) => {
     });
 });
 
+
 app.get('/accueil', (req, res) => {
     
     const user = {
@@ -78,11 +79,8 @@ app.get('/accueil', (req, res) => {
         role: "teacher"
     };
 
-    
     res.render('accueil', { user: user });
 });
-
-
 
 
 

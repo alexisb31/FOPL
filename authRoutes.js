@@ -13,7 +13,7 @@ router.use(session({
   saveUninitialized: true,
 }));
 
-// Créer une connexion à la base de données
+
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -21,7 +21,6 @@ const connection = mysql.createConnection({
   database: 'oplearn'
 });
 
-// Connecter à la base de données
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connecté à la base de données');
